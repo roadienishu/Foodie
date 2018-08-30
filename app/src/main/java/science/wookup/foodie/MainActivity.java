@@ -28,8 +28,10 @@ public class MainActivity extends LoggingActivity implements ListAdapter.OnFoodC
 
     @Override
     public void onFoodClick(int position) {
-        Toast.makeText(this, Foods.names[position], Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ViewPagerFragment.KEY_POSITION, position);
         ViewPagerFragment viewPagerFragment = new ViewPagerFragment();
+        viewPagerFragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.placeholder, viewPagerFragment);
